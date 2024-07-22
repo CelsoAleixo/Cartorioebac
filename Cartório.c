@@ -206,46 +206,85 @@ int main()
 {
     int opcao = 0; // Definindo as variáveis
     int laco = 1;
-    for (laco = 1; laco == 1;) // corrigido o operador de comparação
-    {
-        system("cls");
+    char senhadigitada[10]= "a";
+    int comparacao;
+    int tentativas = 3; // Numero de tentativas permitidas
+    
+    setlocale (LC_ALL, "Portuguese"); //Definindo Linguagem
+    
+	
+    printf("###Cartório da EBAC###\n\n"); // Início do Menu
+    while (tentativas > 0){
+       printf("Login de administrador!\n\nDigite a sua senha:");
+       scanf("%s",senhadigitada);
+    
+       comparacao = strcmp(senhadigitada, "admin");
+    
+    
+        if(comparacao== 0 ) {
+		    while (laco ==1)//corrigido o operador de comparaçao
+		    { 
+		   
+	
 
-        setlocale(LC_ALL, "Portuguese"); // Definindo a Linguagem
+            system("cls");
 
-        printf("###Cartório da EBAC###\n\n"); // Início do Menu
-        printf("Escolha a opção desejada do menu:\n\n");
-        printf("\t1 - Registrar nomes\n");
-        printf("\t2 - Consultar nomes\n");
-        printf("\t3 - Deletar nomes\n\n");
-        printf("\t4 - Sair do sistema\n\n");
-        printf("Opção: "); // Fim do menu
+            setlocale(LC_ALL, "Portuguese"); // Definindo a Linguagem
 
-        scanf("%d", &opcao); // Armazenando a escolha do usuário
+            printf("###Cartório da EBAC###\n\n"); // Início do Menu
+            printf("Escolha a opção desejada do menu:\n\n");
+            printf("\t1 - Registrar nomes\n");
+            printf("\t2 - Consultar nomes\n");
+            printf("\t3 - Deletar nomes\n\n");
+            printf("\t4 - Sair do sistema\n\n");
+            printf("Opção: "); // Fim do menu
 
-        system("cls"); // responsável por limpar a tela
+            scanf("%d", &opcao); // Armazenando a escolha do usuário
 
-        switch (opcao) // início da seleção do menu
-        {
-        case 1:
-            Registro(); // chamada de funções
-            break;
+            system("cls"); // responsável por limpar a tela
 
-        case 2:
-            Consulta();
-            break;
+            switch (opcao) // início da seleção do menu
+            {
+                case 1:
+                Registro(); // chamada de funções
+                break;
 
-        case 3:
-            Deletar();
-            break;
+                case 2:
+                Consulta();
+                break;
 
-        case 4:
-            printf("Obrigado por utilizar o sistema!\n");
-            return 0;
+                case 3:
+                Deletar();
+                break;
 
-        default:
-            printf("Essa opção não está disponível!\n");
-            system("pause");
-            break;
-        }
+                case 4:
+                printf("Obrigado por utilizar o sistema!\n");
+                return 0;
+  
+                default:
+                printf("Essa opção não está disponível!\n");
+                system("pause");
+                
+            }
+            
+			 break; // Sair do loop interno
+		} 
+		break; //Sair do loop externo se a senha  estiver correta
+		 
+       } else {
+	   tentativas--;
+	   if (tentativas > 0) {
+	   	printf("Senha incorreta! Você tem mais %d tentativas (s). \n", tentativas );
+	   	
+	    }else {
+	    	printf("Numero de tentativas excedido. Programa encerrado. \n");
+		}
+       	
+	   }
     }
+    
+    return 0;
+
 }
+
+
