@@ -267,7 +267,7 @@ int main()
                 
             }
             
-			 break; // Sair do loop interno
+	
 		} 
 		break; //Sair do loop externo se a senha  estiver correta
 		 
